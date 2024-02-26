@@ -45,6 +45,7 @@ public class Matriz {
                     }
                 }
 
+                /* 
                 // Mostrar la matriz para verificar
                 System.out.println("\nMatriz ingresada:");
                 for (int i = 0; i < renglon; i++) {
@@ -53,6 +54,12 @@ public class Matriz {
                     }
                     System.out.println(); // Nueva línea después de cada fila
                 }
+                */
+
+                matriz.getColumnaRenglon(columna, renglon);
+                matriz.get_Matriz();
+                matriz.Mostrar_Matriz();
+
 
                 break;
             case 2:
