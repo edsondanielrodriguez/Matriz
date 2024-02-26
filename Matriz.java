@@ -42,8 +42,10 @@ public class Matriz {
                     for (int j = 0; j < columna; j++) {
                         System.out.printf("Elemento [%d][%d]: ", i, j);
                         matriz[i][j] = entrada.nextInt(); // Restaurado para leer la entrada del usuario
+                    //    matriz.get_Matriz(matriz[i][j]);
                     }
                 }
+
 
                 /* 
                 // Mostrar la matriz para verificar
@@ -56,9 +58,9 @@ public class Matriz {
                 }
                 */
 
-                matriz.getColumnaRenglon(columna, renglon);
-                matriz.get_Matriz();
-                matriz.Mostrar_Matriz();
+            //    matriz.getColumnaRenglon(columna, renglon);
+            //    matriz.get_Matriz();
+             //   matriz.Mostrar_Matriz();
 
 
                 break;
