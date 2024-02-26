@@ -29,6 +29,7 @@ public class Matriz{
             case 1:
                 
                 System.out.printf("%n");
+                
                 do{
                     System.out.printf("Ingrese la cantidad de columnas: ");
                     columna = entrada.nextInt();
@@ -44,6 +45,7 @@ public class Matriz{
                 Solicitud_Matriz matrix = new Solicitud_Matriz();
                 matrix.get_matriz(columna,renglon);
                 
+                //Mostrar datos de renglon
                 System.out.printf("%n");
                 matrix.mostrarColumnaRenglon();
                 System.out.printf("%n");
