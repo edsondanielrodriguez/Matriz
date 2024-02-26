@@ -8,6 +8,7 @@ public class Matriz{
     public static void main(String args[]){
         //variables
         int opcion = 0;
+        
     
 
         //Creación de objetos
@@ -28,41 +29,42 @@ public class Matriz{
             case 1:
                 int columna=0, renglon=0;
                 System.out.printf("%n");
-                Scanner sc =  new Scanner(System.in);
+       //         Scanner sc =  new Scanner(System.in);
 
                 do{
                     System.out.printf("Ingrese la cantidad de columnas: ");
-                    columna = sc.nextInt();
+                    columna = entrada.nextInt();
                 }while(columna<1);
                 
                 System.out.printf("%n");
                 do{
                     System.out.printf("Ingrese la cantidad de renglones: ");
-                    renglon = sc.nextInt();
+                    renglon = entrada.nextInt();
                 }while(renglon<1);
 
-                /* 
-                Solicitud_Matriz matrix = new Solicitud_Matriz();
-                matrix.get_matriz(columna,renglon);
-                
-                /* 
-                //Mostrar datos de renglon
-                System.out.printf("%n");
-                matrix.mostrarColumnaRenglon();
-                System.out.printf("%n");
-                */
-
                 //Hacer matriz
-            
-                int matriz[][] = new int [renglon][columna];  
-                for(int i = 0; i < matriz.length; i++){
-                    for(int j = 0; j < matriz[i].length; j++){
-                        System.out.printf("Ingresa el nombre de la fila " + i + " y la columna " + j);
-                        matriz[i][j] = sc.next();
-                        System.out.printf("=)");
 
+                int[][] ob = new ob[renglon][columna];
+            
+                System.out.println("Ingrese los números enteros para la matriz:");
+                for (int i = 0; i < renglon; i++) {
+                    for (int j = 0; j < columna; j++) {
+                        System.out.printf("Elemento [%d][%d]: ", i, j);
+                        ob[i][j] = entrada.nextInt();
                     }
                 }
+
+                // Opcional: Mostrar la matriz para verificar
+
+                System.out.println("\nMatriz ingresada:");
+                for (int i = 0; i < renglon; i++) {
+                    for (int j = 0; j < columna; j++) {
+                        System.out.print(ob[i][j] + " ");
+                    }
+                    System.out.println(); // Nueva línea después de cada fila
+                }
+
+            //    scanner.close(); // Cerrar el scanner para evitar fugas de recursos
 
                 break;
         
