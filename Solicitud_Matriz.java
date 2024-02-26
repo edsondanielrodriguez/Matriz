@@ -9,6 +9,10 @@ public class Solicitud_Matriz {
         this.renglon = renglon;
     }
 
+    public Solicitud_Matriz(int[][] matriz) {
+        this.matriz = matriz;
+    }
+
     public void get_Matriz(int[][] matriz){
         this.matriz=matriz;
     }
@@ -31,10 +35,10 @@ public class Solicitud_Matriz {
         System.out.printf("Renglón: %d%n", setRenglon());  
     }
     
-    public void Mostrar_Matriz() {
+    public void Mostrar_Matriz(int[][] matriz) {
         System.out.println("\nMatriz ingresada:");
-        for (int i = 0; i < renglon; i++) {
-            for (int j = 0; j < columna; j++) {
+        for (int i = 0; i < setRenglon(); i++) {
+            for (int j = 0; j < setColumna(); j++) {
                 System.out.print(matriz[i][j] + " ");
             }
             System.out.println(); // Nueva línea después de cada fila

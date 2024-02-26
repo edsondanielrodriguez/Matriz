@@ -1,77 +1,85 @@
 import java.util.Scanner;
 
 public class Matriz {
+    private static int[][] matrizGlobal; // Campo estático para la matriz
 
-    public static void main(String args[]) {
-        // Variables
-        int opcion = 0;
-
-        // Creación de objetos Scanner para la entrada de datos
+    public static void main(String[] args) {
         Scanner entrada = new Scanner(System.in);
-
-        System.out.println("\nBienvenido, presione:");
-        System.out.println("1. Crear e insertar matriz");
-        System.out.println("2. Salir\n");
+        int opcion;
+        int columna = 0, renglon = 0;
 
         do {
+            // Intento de limpiar la pantalla
+            try {
+                String sistemaOperativo = System.getProperty("os.name");
+                if (sistemaOperativo.contains("Windows")) {
+                    new ProcessBuilder("cmd", "/c", "cls").inheritIO().start().waitFor();
+                } else {
+                    System.out.print("\033[H\033[2J");
+                    System.out.flush();
+                }
+            } catch (Exception e) {
+                System.out.println("No se pudo limpiar la pantalla");
+            }
+
+            System.out.println("\nBienvenido, presione:");
+            System.out.println("1. Crear e insertar matriz");
+            System.out.println("2. Mostrar matriz");
+            System.out.println("3. Salir\n");
+
             System.out.print("Ingrese una opción: ");
             opcion = entrada.nextInt();
-        } while (opcion < 1 || opcion > 2);
 
-        switch (opcion) {
-            case 1:
-                int columna = 0, renglon = 0;
-                System.out.println(); // Se cambió printf por println para una nueva línea
+            switch (opcion) {
+                case 1:
+                    System.out.println();
+                    do {
+                        System.out.print("Ingrese la cantidad de columnas: ");
+                        columna = entrada.nextInt();
+                    } while (columna < 1);
 
-                do {
-                    System.out.print("Ingrese la cantidad de columnas: ");
-                    columna = entrada.nextInt();
-                } while (columna < 1);
+                    System.out.println();
+                    do {
+                        System.out.print("Ingrese la cantidad de renglones: ");
+                        renglon = entrada.nextInt();
+                    } while (renglon < 1);
 
-                System.out.println(); // Nueva línea
-                do {
-                    System.out.print("Ingrese la cantidad de renglones: ");
-                    renglon = entrada.nextInt();
-                } while (renglon < 1);
+                    matrizGlobal = new int[renglon][columna];
 
-                // Creación de la matriz
-                int[][] matriz = new int[renglon][columna]; // Corrección: "new matriz" a "new int"
-                
-                System.out.println("Ingrese los números enteros para la matriz:");
-                for (int i = 0; i < renglon; i++) {
-                    for (int j = 0; j < columna; j++) {
-                        System.out.printf("Elemento [%d][%d]: ", i, j);
-                        matriz[i][j] = entrada.nextInt(); // Restaurado para leer la entrada del usuario
-                    //    matriz.get_Matriz(matriz[i][j]);
+                    System.out.println("Ingrese los números enteros para la matriz:");
+                    for (int i = 0; i < renglon; i++) {
+                        for (int j = 0; j < columna; j++) {
+                            System.out.printf("Elemento [%d][%d]: ", i, j);
+                            matrizGlobal[i][j] = entrada.nextInt();
+                        }
                     }
-                }
-
-
-                /* 
-                // Mostrar la matriz para verificar
-                System.out.println("\nMatriz ingresada:");
-                for (int i = 0; i < renglon; i++) {
-                    for (int j = 0; j < columna; j++) {
-                        System.out.print(matriz[i][j] + " ");
+                    break;
+                case 2:
+                    if (matrizGlobal != null) {
+                        mostrarMatriz(renglon, columna);
+                    } else {
+                        System.out.println("No hay una matriz para mostrar. Por favor, cree una primero.");
                     }
-                    System.out.println(); // Nueva línea después de cada fila
-                }
-                */
+                    break;
+                case 3:
+                    System.out.println("Saliendo...");
+                    break;
+                default:
+                    System.out.println("Opción no válida.");
+                    break;
+            }
+        } while (opcion != 3);
 
-            //    matriz.getColumnaRenglon(columna, renglon);
-            //    matriz.get_Matriz();
-             //   matriz.Mostrar_Matriz();
+        entrada.close();
+    }
 
-
-                break;
-            case 2:
-                System.out.println("Saliendo...");
-                break;
-            default:
-                // No es necesario, ya que la validación de la opción asegura entrar en uno de los casos válidos
-                break;
+    private static void mostrarMatriz(int renglon, int columna) {
+        System.out.println("\nMatriz ingresada:");
+        for (int i = 0; i < renglon; i++) {
+            for (int j = 0; j < columna; j++) {
+                System.out.print(matrizGlobal[i][j] + " ");
+            }
+            System.out.println();
         }
-
-        entrada.close(); // Se mueve afuera del switch para cerrar el scanner correctamente
     }
 }
