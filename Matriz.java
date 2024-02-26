@@ -62,6 +62,9 @@ public class Matriz {
                         entrada.nextLine(); // Esperar a que el usuario presione Enter
                     } else {
                         System.out.println("No hay una matriz para mostrar. Por favor, cree una primero.");
+                        System.out.println("\nPresione Enter para continuar...");
+                        entrada.nextLine(); // Consumir el salto de línea restante
+                        entrada.nextLine(); // Esperar a que el usuario presione Enter
                     }
                     break;
                 default:
