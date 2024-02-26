@@ -53,7 +53,8 @@ public class Matriz {
                             matrizGlobal[i][j] = entrada.nextInt();
                         }
                     }
-                    break;
+                break;
+
                     case 2:
                     if (matrizGlobal != null) {
                         mostrarMatriz(renglon, columna);
@@ -67,6 +68,11 @@ public class Matriz {
                         entrada.nextLine(); // Esperar a que el usuario presione Enter
                     }
                     break;
+                   
+                    case 3:
+                        System.exit(0);
+                    break;
+
                 default:
                     System.out.println("Opción no válida.");
                     break;
