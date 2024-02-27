@@ -50,7 +50,7 @@ public class Matriz {
                     System.out.println("Ingrese los números enteros para la matriz:");
                     for (int i = 0; i < renglon; i++) {
                         for (int j = 0; j < columna; j++) {
-                            System.out.printf("Elemento [%d][%d]: ", i, j);
+                            System.out.printf("Elemento [%d][%d]: ", i+1, j+1);
                             matrizGlobal[i][j] = entrada.nextInt();
                         }
                     }
@@ -74,8 +74,14 @@ public class Matriz {
                         editarValorMatriz(entrada, renglon, columna);
                     break;
 
+                    case 4:
+                    System.out.println("Programa finalizado.");
+                    break;
+
                 default:
+                    System.out.println("");
                     System.out.println("Opción no válida.");
+                    System.out.println("");
                     break;
             }
         } while (opcion != 4);
