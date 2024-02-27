@@ -35,7 +35,7 @@ public class Solicitud_Matriz {
         System.out.printf("Renglón: %d%n", setRenglon());  
     }
     
-    public void Mostrar_Matriz(int[][] matriz) {
+    public void mostrarMatriz(int[][] matriz) {
         System.out.println("\nMatriz ingresada:");
         for (int i = 0; i < setRenglon(); i++) {
             for (int j = 0; j < setColumna(); j++) {
