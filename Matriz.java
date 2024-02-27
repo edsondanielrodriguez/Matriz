@@ -33,14 +33,34 @@ public class Matriz {
 
             switch (opcion) {
                 case 1:
-                    crearEInsertarMatriz(entrada);
+                    System.out.println();
+                    do {
+                        System.out.print("Ingrese la cantidad de columnas: ");
+                        columna = entrada.nextInt();
+                    } while (columna < 1);
+
+                    System.out.println();
+                    do {
+                        System.out.print("Ingrese la cantidad de renglones: ");
+                        renglon = entrada.nextInt();
+                    } while (renglon < 1);
+
+                    matrizGlobal = new int[renglon][columna];
+
+                    System.out.println("Ingrese los números enteros para la matriz:");
+                    for (int i = 0; i < renglon; i++) {
+                        for (int j = 0; j < columna; j++) {
+                            System.out.printf("Elemento [%d][%d]: ", i, j);
+                            matrizGlobal[i][j] = entrada.nextInt();
+                        }
+                    }
                 break;
 
                     case 2:
                     if (matrizGlobal != null) {
-                        mostrarMatriz();
+                        mostrarMatriz(renglon, columna);
                         System.out.println("\nPresione Enter para continuar...");
-                        entrada.nextLine(); // Consumir el salto de línea restante que nextInt() deja
+                        entrada.nextLine(); // Consumir el salto de línea restante
                         entrada.nextLine(); // Esperar a que el usuario presione Enter
                     } else {
                         System.out.println("No hay una matriz para mostrar. Por favor, cree una primero.");
@@ -62,37 +82,9 @@ public class Matriz {
 
         entrada.close();
     }
-
-    //Funcion para crear e insertar matriz
-    private static void crearEInsertarMatriz(Scanner entrada) {
-        int columna, renglon;
-        System.out.println();
-        do {
-            System.out.print("Ingrese la cantidad de columnas: ");
-            columna = entrada.nextInt();
-        } while (columna < 1);
-    
-        System.out.println();
-        do {
-            System.out.print("Ingrese la cantidad de renglones: ");
-            renglon = entrada.nextInt();
-        } while (renglon < 1);
-    
-        matrizGlobal = new int[renglon][columna];
-    
-        System.out.println("Ingrese los números enteros para la matriz:");
-        for (int i = 0; i < renglon; i++) {
-            for (int j = 0; j < columna; j++) {
-                System.out.printf("Elemento [%d][%d]: ", i, j);
-                matrizGlobal[i][j] = entrada.nextInt();
-            }
-        }
-    }
-    
     
     //Funcion de mostrar matriz
     private static void mostrarMatriz(int renglon, int columna) {
-        
         System.out.println("\nMatriz ingresada:");
         for (int i = 0; i < renglon; i++) {
             for (int j = 0; j < columna; j++) {
@@ -127,17 +119,4 @@ public class Matriz {
         }
     }
     
-    private static void mostrarMatriz() {
-        if (matrizGlobal != null) {
-            System.out.println("\nMatriz ingresada:");
-            for (int i = 0; i < matrizGlobal.length; i++) {
-                for (int j = 0; j < matrizGlobal[i].length; j++) {
-                    System.out.print(matrizGlobal[i][j] + " ");
-                }
-                System.out.println();
-            }
-        } else {
-            System.out.println("No hay una matriz para mostrar. Por favor, cree una primero.");
-        }
-    }
 }
