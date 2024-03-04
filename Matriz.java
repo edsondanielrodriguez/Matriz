@@ -7,7 +7,10 @@ public class Matriz {
         Scanner entrada = new Scanner(System.in);
         int opcion;
         int columna = 0, renglon = 0;
-
+        int posicion_inicial = 0;
+        int posicion_final = 0;
+        int pasos = 0;
+        System.out.println("\nBienvenido :)\n");
         do {
             // Intento de limpiar la pantalla
             try {
@@ -22,40 +25,50 @@ public class Matriz {
                 System.out.println("No se pudo limpiar la pantalla");
             }
 
-            System.out.println("\nBienvenido, presione:");
+            System.out.println("\nMENU");
             System.out.println("1. Crear e insertar matriz");
-            System.out.println("2. Mostrar matriz");
+            System.out.println("2. Mostrar matriz de transición");
             System.out.println("3. Editar matriz");
-            System.out.println("4. Salir\n");
+            System.out.println("4. Posición inicial");
+            System.out.println("5. Posición final");
+            System.out.println("6. Pasos");
+
+            System.out.println("8. Salir\n");
 
             System.out.print("Ingrese una opción: ");
             opcion = entrada.nextInt();
 
             switch (opcion) {
+                //Iniciar matriz
                 case 1:
                     System.out.println();
-                    do {
-                        System.out.print("Ingrese la cantidad de columnas: ");
-                        columna = entrada.nextInt();
-                    } while (columna < 1);
+                    System.out.println("Presione 0 para cancelar o 1 para continuar");
+                    opcion = entrada.nextInt();
 
-                    System.out.println();
-                    do {
-                        System.out.print("Ingrese la cantidad de renglones: ");
-                        renglon = entrada.nextInt();
-                    } while (renglon < 1);
+                    if (opcion==0) {
+                        break;
+                    }
+                    else{
+                        do {
+                            System.out.print("Ingrese la cantidad de estados: ");
+                            columna = entrada.nextInt();
+                        } while (columna < 1);
 
-                    matrizGlobal = new int[renglon][columna];
+                        renglon = columna;
 
-                    System.out.println("Ingrese los números enteros para la matriz:");
-                    for (int i = 0; i < renglon; i++) {
-                        for (int j = 0; j < columna; j++) {
-                            System.out.printf("Elemento [%d][%d]: ", i+1, j+1);
-                            matrizGlobal[i][j] = entrada.nextInt();
+                        matrizGlobal = new int[renglon][columna];
+
+                        System.out.println("Ingrese los números enteros para la matriz:");
+                        for (int i = 0; i < renglon; i++) {
+                            for (int j = 0; j < columna; j++) {
+                                System.out.printf("Elemento [%d][%d]: ", i+1, j+1);
+                                matrizGlobal[i][j] = entrada.nextInt();
+                            }
                         }
                     }
                 break;
-
+                    
+                    //Mostrar Matriz
                     case 2:
                     if (matrizGlobal != null) {
                         mostrarMatriz(renglon, columna);
@@ -70,21 +83,79 @@ public class Matriz {
                     }
                     break;
                    
+                    //Editar matriz
                     case 3:
-                        editarValorMatriz(entrada, renglon, columna);
+                        System.out.println("Presione 0 para cancelar o 1 para continuar");
+                        opcion = entrada.nextInt();
+                        if (opcion==0) {
+                            break;
+                        }
+                        else{
+                            editarValorMatriz(entrada, renglon, columna);
+                        }
                     break;
 
                     case 4:
-                    System.out.println("Programa finalizado.");
+                        System.out.println("Presione 0 para cancelar o 1 para continuar\n");
+                        opcion = entrada.nextInt();
+                        if (opcion==0) {
+                            break;
+                        }
+                        else{
+                            do {
+                                System.out.print("Ingrese la posición inicial: ");
+                                posicion_inicial = entrada.nextInt();
+                            } while (posicion_inicial < 0);
+                        }        
                     break;
 
-                default:
-                    System.out.println("");
-                    System.out.println("Opción no válida.");
-                    System.out.println("");
+                    case 5:
+                        System.out.println("Presione 0 para cancelar o 1 para continuar\n");
+                        opcion = entrada.nextInt();
+                        if (opcion==0) {
+                            break;
+                        }
+                        else{
+                            do {
+                                System.out.print("Ingrese la posición final: ");
+                                posicion_final = entrada.nextInt();
+                            } while (posicion_final < 0);
+                        }        
+                    break;
+
+                    case 6:
+                        System.out.println("Presione 0 para cancelar o 1 para continuar\n");
+                        opcion = entrada.nextInt();
+                        if (opcion==0) {
+                            break;
+                        }
+                        else{
+                            do {
+                                System.out.print("Ingrese la cantidad de pasos: ");
+                                pasos = entrada.nextInt();
+                            } while (pasos < 0);
+                        }        
+                    break;
+
+                    case 7:
+                        System.out.println("Posición inicial: " + posicion_inicial + " Posición final: " + posicion_final + " Pasos: " +pasos);
+                        System.out.println("\nPresione Enter para continuar...");
+                        entrada.nextLine(); // Consumir el salto de línea restante
+                        entrada.nextLine(); // Esperar a que el usuario presione Enter
+                    break;
+
+                    case 8:
+                        System.out.println("Programa finalizado.");
+                        System.exit(0);
+                    break;
+
+                    default:
+                        System.out.println("");
+                        System.out.println("Opción no válida.");
+                        System.out.println("");
                     break;
             }
-        } while (opcion != 4);
+        } while (opcion != 8);
 
         entrada.close();
     }
