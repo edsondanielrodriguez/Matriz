@@ -1,7 +1,7 @@
 import java.util.Scanner;
 
 public class Matriz {
-    private static int[][] matrizGlobal; // Campo estático para la matriz
+    private static double[][] matrizGlobal; // Campo estático para la matriz
 
     public static void main(String[] args) {
         Scanner entrada = new Scanner(System.in);
@@ -57,13 +57,13 @@ public class Matriz {
 
                         renglon = columna;
 
-                        matrizGlobal = new int[renglon][columna];
+                        matrizGlobal = new double[renglon][columna];
 
                         System.out.println("Ingrese los números enteros para la matriz:");
                         for (int i = 0; i < renglon; i++) {
                             for (int j = 0; j < columna; j++) {
                                 System.out.printf("Elemento [%d][%d]: ", i+1, j+1);
-                                matrizGlobal[i][j] = entrada.nextInt();
+                                matrizGlobal[i][j] = entrada.nextDouble();
                             }
                         }
                     }
@@ -196,47 +196,34 @@ public class Matriz {
         if (fila >= 0 && fila <= renglon && col >= 1 && col <= columna) {
             System.out.println("El valor actual es: " + matrizGlobal[fila - 1][col - 1]);
             System.out.println("Ingrese el nuevo valor:");
-            matrizGlobal[fila - 1][col - 1] = entrada.nextInt();
+            matrizGlobal[fila - 1][col - 1] = entrada.nextDouble();
             System.out.println("Valor actualizado exitosamente.");
         } else {
             System.out.println("Posición fuera de los límites de la matriz.");
         }
     }
 
-    private static void Resolver_Proceso(Scanner entrada, int columna, int posicion_inicial, int[][] matrizGlobal, int posicion_final, int pasos){
-     //   int[][] vectorOriginal = new int[columna][1];
-
+    private static void Resolver_Proceso(Scanner entrada, int columna, int posicion_inicial, double[][] matrizGlobal, int posicion_final, int pasos){
         if (matrizGlobal == null) {
             System.out.println("La matriz no han sido inicializados.");
             return;
         }
 
-
         System.out.println();
-        int[] vectorInvertido = new int[columna];
-        int[] vectorP = new int[columna];
+        Double[] vectorInvertido = new Double[columna];
+        Double[] vectorP = new Double[columna];
 
-        // Llenar el vector original y preparar el vector invertido
         for (int i = 0; i < columna; i++) {
             if (i == posicion_inicial) {
-            //    vectorOriginal[i][0] = 1;
-                vectorInvertido[i] = 1;
+                vectorInvertido[i] = 1.0;
             } else {
-            //    vectorOriginal[i][0] = 0;
-                vectorInvertido[i] = 0;
+                vectorInvertido[i] = 0.0;
             }
         }
-        /*
-        // Imprimir la matriz original
-        System.out.println("Matriz original de " + columna + "x1:");
-        for (int i = 0; i < columna; i++) {
-            System.out.println(vectorOriginal[i][0]);
-        }
-        */
-
+        
         // Imprimir la versión "invertida" (realmente, es solo imprimir el vectorInvertido)
         System.out.print("Vector PI0: ");
-        for (int valor : vectorInvertido) {
+        for (double valor : vectorInvertido) {
             System.out.print(valor + " ");
         }
         System.out.println();
