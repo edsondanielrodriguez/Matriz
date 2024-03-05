@@ -6,6 +6,7 @@ public class Matriz {
     public static void main(String[] args) {
         Scanner entrada = new Scanner(System.in);
         int opcion;
+    //    int[] vectorInvertido;
         int columna = 0, renglon = 0;
         int posicion_inicial = 0;
         int posicion_final = 0;
@@ -138,7 +139,7 @@ public class Matriz {
                     break;
 
                     case 7:                        
-                        Ejercicio_Matriz(entrada,columna,posicion_inicial);
+                        Resolver_Proceso(entrada,columna,posicion_inicial);
                         System.out.println("\nPresione Enter para continuar...");
                         entrada.nextLine(); // Consumir el salto de línea restante
                         entrada.nextLine(); // Esperar a que el usuario presione Enter
@@ -147,6 +148,12 @@ public class Matriz {
                     case 8:
                         System.out.println("Programa finalizado.");
                         System.exit(0);
+                    break;
+
+                    case 9:
+                        System.out.print("Vector PI0: ");
+                    
+                        System.out.println();
                     break;
 
                     default:
@@ -186,7 +193,7 @@ public class Matriz {
         int col = entrada.nextInt();
         
         // Verifica si la fila y columna son válidas
-        if (fila >= 1 && fila <= renglon && col >= 1 && col <= columna) {
+        if (fila >= 0 && fila <= renglon && col >= 1 && col <= columna) {
             System.out.println("El valor actual es: " + matrizGlobal[fila - 1][col - 1]);
             System.out.println("Ingrese el nuevo valor:");
             matrizGlobal[fila - 1][col - 1] = entrada.nextInt();
@@ -196,29 +203,30 @@ public class Matriz {
         }
     }
 
-    private static void Ejercicio_Matriz(Scanner entrada, int columna, int posicion_inicial){
+    private static void Resolver_Proceso(Scanner entrada, int columna, int posicion_inicial){
         int[][] vectorOriginal = new int[columna][1];
         int[] vectorInvertido = new int[columna];
 
         // Llenar el vector original y preparar el vector invertido
         for (int i = 0; i < columna; i++) {
             if (i == posicion_inicial) {
-                vectorOriginal[i][0] = 1;
+            //    vectorOriginal[i][0] = 1;
                 vectorInvertido[i] = 1;
             } else {
-                vectorOriginal[i][0] = 0;
+            //    vectorOriginal[i][0] = 0;
                 vectorInvertido[i] = 0;
             }
         }
-
+        /*
         // Imprimir la matriz original
         System.out.println("Matriz original de " + columna + "x1:");
         for (int i = 0; i < columna; i++) {
             System.out.println(vectorOriginal[i][0]);
         }
+        */
 
         // Imprimir la versión "invertida" (realmente, es solo imprimir el vectorInvertido)
-        System.out.print("Vector invertido: ");
+        System.out.print("Vector PI0: ");
         for (int valor : vectorInvertido) {
             System.out.print(valor + " ");
         }
