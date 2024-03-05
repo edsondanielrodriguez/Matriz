@@ -221,13 +221,14 @@ public class Matriz {
             }
         }
         
-        // Imprimir la versión "invertida" (realmente, es solo imprimir el vectorInvertido)
+        // PI 0
         System.out.print("Vector PI0: ");
         for (double valor : vectorInvertido) {
             System.out.print(valor + " ");
         }
         System.out.println();
 
+        //Matriz introducida
         System.out.println("\nMatriz ingresada:");
         for (int i = 0; i < columna; i++) {
             for (int j = 0; j < columna; j++) {
@@ -235,48 +236,49 @@ public class Matriz {
             }
             System.out.println();
         }
+        //////////////////////////////////////////77
+        double[][] resultado = CopiarMatriz(matrizGlobal);
 
-        
-        int[][] resultado = new int[columna][columna];
-
-        for (int i = 0; i < columna; i++) {
-            for (int j = 0; j < columna; j++) {
-                for (int k = 0; k < columna; k++) {
-                    resultado[i][j] += matrizGlobal[i][k] * matrizGlobal[k][j];
-                    
-                    
+        // Multiplicar la matriz por sí misma (pasos - 1) veces.
+        for (int i = 1; i < pasos; i++) {
+            resultado = multiplicarMatrices(resultado, matrizGlobal);
+        }
+    
+        // Imprimir resultado.
+        System.out.println("Matriz después de multiplicarse por sí misma " + pasos + " veces:");
+        mostrarMatriz(resultado.length, resultado[0].length, resultado);
+    }
+    
+    private static double[][] CopiarMatriz(double[][] matriz) {
+        double[][] copia = new double[matriz.length][matriz[0].length];
+        for (int i = 0; i < matriz.length; i++) {
+            System.arraycopy(matriz[i], 0, copia[i], 0, matriz[i].length);
+        }
+        return copia;
+    }
+    
+    // Método para multiplicar matrices.
+    private static double[][] multiplicarMatrices(double[][] A, double[][] B) {
+        double[][] resultado = new double[A.length][B[0].length];
+        for (int i = 0; i < A.length; i++) {
+            for (int j = 0; j < B[0].length; j++) {
+                for (int k = 0; k < B.length; k++) {
+                    resultado[i][j] += A[i][k] * B[k][j];
                 }
             }
         }
-
-        System.out.println("Matriz Resultado:");
-    for (int i = 0; i < resultado.length; i++) {
-        for (int j = 0; j < resultado[i].length; j++) {
-            System.out.print(resultado[i][j] + " ");
-        }
-        System.out.println(); // Nueva línea para cada fila
-    }
-
-
-                    /* 
-                                int[] resultado = new int[columna];
-
-                                for (int i = 0; i < columna; i++) {
-                                    int suma = 0;
-                                    for (int j = 0; j < columna; j++) {
-                                        suma += matrizGlobal[i][j] * vectorInvertido[j];
-                                    }
-                                    resultado[i] = suma;
-                                }
-
-                                // Opcional: Imprimir el vector resultado
-                                System.out.println("Resultado de la multiplicación:");
-                                for (int valor : resultado) {
-                                    System.out.println(valor);
-                                }
-
-                    */
-
+        return resultado;
     }
     
+    // Método modificado para mostrar matriz con parámetro matriz.
+    private static void mostrarMatriz(int renglon, int columna, double[][] matriz) {
+        for (int i = 0; i < renglon; i++) {
+            for (int j = 0; j < columna; j++) {
+                System.out.print(matriz[i][j] + " ");
+            }
+            System.out.println();
+        }
+    }
+
+
 }
