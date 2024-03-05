@@ -139,7 +139,7 @@ public class Matriz {
                     break;
 
                     case 7:                        
-                        Resolver_Proceso(entrada,columna,posicion_inicial);
+                        Resolver_Proceso(entrada, columna, posicion_inicial, matrizGlobal, posicion_final, pasos);
                         System.out.println("\nPresione Enter para continuar...");
                         entrada.nextLine(); // Consumir el salto de línea restante
                         entrada.nextLine(); // Esperar a que el usuario presione Enter
@@ -203,9 +203,18 @@ public class Matriz {
         }
     }
 
-    private static void Resolver_Proceso(Scanner entrada, int columna, int posicion_inicial){
-        int[][] vectorOriginal = new int[columna][1];
+    private static void Resolver_Proceso(Scanner entrada, int columna, int posicion_inicial, int[][] matrizGlobal, int posicion_final, int pasos){
+     //   int[][] vectorOriginal = new int[columna][1];
+
+        if (matrizGlobal == null) {
+            System.out.println("La matriz no han sido inicializados.");
+            return;
+        }
+
+
+        System.out.println();
         int[] vectorInvertido = new int[columna];
+        int[] vectorP = new int[columna];
 
         // Llenar el vector original y preparar el vector invertido
         for (int i = 0; i < columna; i++) {
@@ -231,6 +240,56 @@ public class Matriz {
             System.out.print(valor + " ");
         }
         System.out.println();
+
+        System.out.println("\nMatriz ingresada:");
+        for (int i = 0; i < columna; i++) {
+            for (int j = 0; j < columna; j++) {
+                System.out.print(matrizGlobal[i][j] + " ");
+            }
+            System.out.println();
+        }
+
+        
+        int[][] resultado = new int[columna][columna];
+
+        for (int i = 0; i < columna; i++) {
+            for (int j = 0; j < columna; j++) {
+                for (int k = 0; k < columna; k++) {
+                    resultado[i][j] += matrizGlobal[i][k] * matrizGlobal[k][j];
+                    
+                    
+                }
+            }
+        }
+
+        System.out.println("Matriz Resultado:");
+    for (int i = 0; i < resultado.length; i++) {
+        for (int j = 0; j < resultado[i].length; j++) {
+            System.out.print(resultado[i][j] + " ");
+        }
+        System.out.println(); // Nueva línea para cada fila
+    }
+
+
+                    /* 
+                                int[] resultado = new int[columna];
+
+                                for (int i = 0; i < columna; i++) {
+                                    int suma = 0;
+                                    for (int j = 0; j < columna; j++) {
+                                        suma += matrizGlobal[i][j] * vectorInvertido[j];
+                                    }
+                                    resultado[i] = suma;
+                                }
+
+                                // Opcional: Imprimir el vector resultado
+                                System.out.println("Resultado de la multiplicación:");
+                                for (int valor : resultado) {
+                                    System.out.println(valor);
+                                }
+
+                    */
+
     }
     
 }
