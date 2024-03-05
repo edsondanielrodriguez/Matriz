@@ -32,7 +32,7 @@ public class Matriz {
             System.out.println("4. Posición inicial");
             System.out.println("5. Posición final");
             System.out.println("6. Pasos");
-
+            System.out.println("7. Resultados");
             System.out.println("8. Salir\n");
 
             System.out.print("Ingrese una opción: ");
@@ -138,7 +138,37 @@ public class Matriz {
                     break;
 
                     case 7:
-                        System.out.println("Posición inicial: " + posicion_inicial + " Posición final: " + posicion_final + " Pasos: " +pasos);
+                    //    System.out.println("Posición inicial: " + posicion_inicial + " Posición final: " + posicion_final + " Pasos: " +pasos);
+                        
+                    int[][] vectorOriginal = new int[columna][1];
+                    int[] vectorInvertido = new int[columna];
+            
+                    // Llenar el vector original y preparar el vector invertido
+                    for (int i = 0; i < columna; i++) {
+                        if (i == posicion_inicial) {
+                            vectorOriginal[i][0] = 1;
+                            vectorInvertido[i] = 1;
+                        } else {
+                            vectorOriginal[i][0] = 0;
+                            vectorInvertido[i] = 0;
+                        }
+                    }
+            
+                    // Imprimir la matriz original
+                    System.out.println("Matriz original de " + columna + "x1:");
+                    for (int i = 0; i < columna; i++) {
+                        System.out.println(vectorOriginal[i][0]);
+                    }
+            
+                    // Imprimir la versión "invertida" (realmente, es solo imprimir el vectorInvertido)
+                    System.out.print("Vector invertido: ");
+                    for (int valor : vectorInvertido) {
+                        System.out.print(valor + " ");
+                    }
+                    System.out.println();
+            
+
+                        
                         System.out.println("\nPresione Enter para continuar...");
                         entrada.nextLine(); // Consumir el salto de línea restante
                         entrada.nextLine(); // Esperar a que el usuario presione Enter
