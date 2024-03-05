@@ -137,38 +137,8 @@ public class Matriz {
                         }        
                     break;
 
-                    case 7:
-                    //    System.out.println("Posición inicial: " + posicion_inicial + " Posición final: " + posicion_final + " Pasos: " +pasos);
-                        
-                    int[][] vectorOriginal = new int[columna][1];
-                    int[] vectorInvertido = new int[columna];
-            
-                    // Llenar el vector original y preparar el vector invertido
-                    for (int i = 0; i < columna; i++) {
-                        if (i == posicion_inicial) {
-                            vectorOriginal[i][0] = 1;
-                            vectorInvertido[i] = 1;
-                        } else {
-                            vectorOriginal[i][0] = 0;
-                            vectorInvertido[i] = 0;
-                        }
-                    }
-            
-                    // Imprimir la matriz original
-                    System.out.println("Matriz original de " + columna + "x1:");
-                    for (int i = 0; i < columna; i++) {
-                        System.out.println(vectorOriginal[i][0]);
-                    }
-            
-                    // Imprimir la versión "invertida" (realmente, es solo imprimir el vectorInvertido)
-                    System.out.print("Vector invertido: ");
-                    for (int valor : vectorInvertido) {
-                        System.out.print(valor + " ");
-                    }
-                    System.out.println();
-            
-
-                        
+                    case 7:                        
+                        Ejercicio_Matriz(entrada,columna,posicion_inicial);
                         System.out.println("\nPresione Enter para continuar...");
                         entrada.nextLine(); // Consumir el salto de línea restante
                         entrada.nextLine(); // Esperar a que el usuario presione Enter
@@ -224,6 +194,35 @@ public class Matriz {
         } else {
             System.out.println("Posición fuera de los límites de la matriz.");
         }
+    }
+
+    private static void Ejercicio_Matriz(Scanner entrada, int columna, int posicion_inicial){
+        int[][] vectorOriginal = new int[columna][1];
+        int[] vectorInvertido = new int[columna];
+
+        // Llenar el vector original y preparar el vector invertido
+        for (int i = 0; i < columna; i++) {
+            if (i == posicion_inicial) {
+                vectorOriginal[i][0] = 1;
+                vectorInvertido[i] = 1;
+            } else {
+                vectorOriginal[i][0] = 0;
+                vectorInvertido[i] = 0;
+            }
+        }
+
+        // Imprimir la matriz original
+        System.out.println("Matriz original de " + columna + "x1:");
+        for (int i = 0; i < columna; i++) {
+            System.out.println(vectorOriginal[i][0]);
+        }
+
+        // Imprimir la versión "invertida" (realmente, es solo imprimir el vectorInvertido)
+        System.out.print("Vector invertido: ");
+        for (int valor : vectorInvertido) {
+            System.out.print(valor + " ");
+        }
+        System.out.println();
     }
     
 }
