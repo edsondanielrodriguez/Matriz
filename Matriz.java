@@ -222,7 +222,7 @@ public class Matriz {
         }
         
         // PI 0
-        System.out.print("Vector PI0: ");
+        System.out.print("PI0: \n");
         for (double valor : vectorInvertido) {
             System.out.print(valor + " ");
         }
@@ -244,17 +244,20 @@ public class Matriz {
 
         // Multiplicar la matriz por sí misma (pasos - 1) veces.
     //    for (int j = 1; j < pasos; j++) {
-            for (int i = 1; i < pasos; i++) {
+        resultado = matrizGlobal;
+            for (int i = 0; i < pasos; i++) {
+                int j=i+1;
         //        resultado = multiplicarMatrices(resultado, matrizGlobal);
         //          if(i==j){
 
-                    System.out.println("Matriz después de multiplicarse por sí misma " + i + " veces:");
+                    System.out.println("\n\nPI " + j + ":");
                     
                 //    mostrarMatriz(resultado.length, resultado[0].length, resultado);
-                    resultado = multiplicarMatrices(resultado, matrizGlobal);
+                    
                     double[] filaExtraida = extraerFila(resultado, posicion_final);
+                    resultado = multiplicarMatrices(resultado, matrizGlobal);
                     for (double elemento : filaExtraida) {
-                        
+
                         System.out.print(elemento + " ");
                     }
 
@@ -265,7 +268,7 @@ public class Matriz {
         //    mostrarMatriz(resultado.length, resultado[0].length, resultado);
             }
         // Imprimir resultado.
-        
+        System.out.println("\n");
         
         //mostrarMatriz(resultado.length, resultado[0].length, resultado);
     }
