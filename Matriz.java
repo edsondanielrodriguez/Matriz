@@ -246,18 +246,28 @@ public class Matriz {
     //    for (int j = 1; j < pasos; j++) {
             for (int i = 1; i < pasos; i++) {
         //        resultado = multiplicarMatrices(resultado, matrizGlobal);
-        //        if(i==j){
+        //          if(i==j){
+
                     System.out.println("Matriz después de multiplicarse por sí misma " + i + " veces:");
-                    mostrarMatriz(resultado.length, resultado[0].length, resultado);
+                    
+                //    mostrarMatriz(resultado.length, resultado[0].length, resultado);
                     resultado = multiplicarMatrices(resultado, matrizGlobal);
-        //        }
-    //        }
+                    double[] filaExtraida = extraerFila(resultado, posicion_final);
+                    for (double elemento : filaExtraida) {
+                        
+                        System.out.print(elemento + " ");
+                    }
+
+                //    double[] filaExtraida = extraerFila(matriz, filaDeseada);
+        //          }
+    //          }
         //    System.out.println("Matriz después de multiplicarse por sí misma " + j + " veces:");
         //    mostrarMatriz(resultado.length, resultado[0].length, resultado);
-        }
+            }
         // Imprimir resultado.
-        System.out.println("Matriz después de multiplicarse por sí misma " + pasos + " veces:");
-        mostrarMatriz(resultado.length, resultado[0].length, resultado);
+        
+        
+        //mostrarMatriz(resultado.length, resultado[0].length, resultado);
     }
     
     private static double[][] CopiarMatriz(double[][] matriz) {
@@ -291,5 +301,13 @@ public class Matriz {
         }
     }
 
-    
+    public static double[] extraerFila(double[][] matriz, int fila) {
+        if (fila < 0 || fila >= matriz.length) {
+            throw new IllegalArgumentException("Fila fuera de los límites de la matriz");
+        }
+        
+        return matriz[fila];
+    }
+
+   
 }
