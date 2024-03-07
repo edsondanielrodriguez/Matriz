@@ -229,6 +229,7 @@ public class Matriz {
         System.out.println();
 
         //Matriz introducida
+        /* 
         System.out.println("\nMatriz ingresada:");
         for (int i = 0; i < columna; i++) {
             for (int j = 0; j < columna; j++) {
@@ -236,14 +237,24 @@ public class Matriz {
             }
             System.out.println();
         }
+        */
+
         //////////////////////////////////////////77
         double[][] resultado = CopiarMatriz(matrizGlobal);
 
         // Multiplicar la matriz por sí misma (pasos - 1) veces.
-        for (int i = 1; i < pasos; i++) {
-            resultado = multiplicarMatrices(resultado, matrizGlobal);
+    //    for (int j = 1; j < pasos; j++) {
+            for (int i = 1; i < pasos; i++) {
+        //        resultado = multiplicarMatrices(resultado, matrizGlobal);
+        //        if(i==j){
+                    System.out.println("Matriz después de multiplicarse por sí misma " + i + " veces:");
+                    mostrarMatriz(resultado.length, resultado[0].length, resultado);
+                    resultado = multiplicarMatrices(resultado, matrizGlobal);
+        //        }
+    //        }
+        //    System.out.println("Matriz después de multiplicarse por sí misma " + j + " veces:");
+        //    mostrarMatriz(resultado.length, resultado[0].length, resultado);
         }
-    
         // Imprimir resultado.
         System.out.println("Matriz después de multiplicarse por sí misma " + pasos + " veces:");
         mostrarMatriz(resultado.length, resultado[0].length, resultado);
@@ -280,5 +291,5 @@ public class Matriz {
         }
     }
 
-
+    
 }
