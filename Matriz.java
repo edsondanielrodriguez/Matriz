@@ -61,6 +61,7 @@ public class Matriz {
 
                         System.out.println("Ingrese los números enteros para la matriz:");
                         for (int i = 0; i < renglon; i++) {
+                            System.out.printf("\n");
                             for (int j = 0; j < columna; j++) {
                                 System.out.printf("Elemento [%d][%d]: ", i+1, j+1);
                                 matrizGlobal[i][j] = entrada.nextDouble();
@@ -210,8 +211,8 @@ public class Matriz {
         }
 
         System.out.println();
-        Double[] vectorInvertido = new Double[columna];
-        Double[] vectorP = new Double[columna];
+        double[] vectorInvertido = new double[columna];
+        double[] vectorP = new double[columna];
 
         for (int i = 0; i < columna; i++) {
             if (i == posicion_inicial) {
@@ -228,38 +229,29 @@ public class Matriz {
         }
         System.out.println();
 
-        //Matriz introducida
-        /* 
-        System.out.println("\nMatriz ingresada:");
-        for (int i = 0; i < columna; i++) {
-            for (int j = 0; j < columna; j++) {
-                System.out.print(matrizGlobal[i][j] + " ");
-            }
-            System.out.println();
-        }
-        */
-
         //////////////////////////////////////////77
         double[][] resultado = CopiarMatriz(matrizGlobal);
+        double[][] resultado2 = new double[columna][columna];
 
         // Multiplicar la matriz por sí misma (pasos - 1) veces.
     //    for (int j = 1; j < pasos; j++) {
         resultado = matrizGlobal;
             for (int i = 0; i < pasos; i++) {
                 int j=i+1;
-        //        resultado = multiplicarMatrices(resultado, matrizGlobal);
-        //          if(i==j){
 
                     System.out.println("\n\nPI " + j + ":");
                     
                 //    mostrarMatriz(resultado.length, resultado[0].length, resultado);
                     
                     double[] filaExtraida = extraerFila(resultado, posicion_final);
+                    resultado2=resultado;
                     resultado = multiplicarMatrices(resultado, matrizGlobal);
                     for (double elemento : filaExtraida) {
 
                         System.out.print(elemento + " ");
                     }
+
+                //    System.out.print("Probabilidad: " + elemento);
 
                 //    double[] filaExtraida = extraerFila(matriz, filaDeseada);
         //          }
@@ -270,6 +262,11 @@ public class Matriz {
         // Imprimir resultado.
         System.out.println("\n");
         
+        double valorEspecifico = resultado2[posicion_final][posicion_inicial];
+
+        System.out.println("La probabilidad de (" + posicion_inicial + ", " + posicion_final + ") es: " + valorEspecifico);
+
+     
         //mostrarMatriz(resultado.length, resultado[0].length, resultado);
     }
     
