@@ -244,20 +244,13 @@ public class Matriz {
                 //    mostrarMatriz(resultado.length, resultado[0].length, resultado);
                     
                     double[] filaExtraida = extraerFila(resultado, posicion_final);
-                    resultado2=resultado;
+                    resultado2=CopiarMatriz(resultado);
                     resultado = multiplicarMatrices(resultado, matrizGlobal);
                     for (double elemento : filaExtraida) {
 
                         System.out.print(elemento + " ");
                     }
 
-                //    System.out.print("Probabilidad: " + elemento);
-
-                //    double[] filaExtraida = extraerFila(matriz, filaDeseada);
-        //          }
-    //          }
-        //    System.out.println("Matriz después de multiplicarse por sí misma " + j + " veces:");
-        //    mostrarMatriz(resultado.length, resultado[0].length, resultado);
             }
         // Imprimir resultado.
         System.out.println("\n");
@@ -266,8 +259,6 @@ public class Matriz {
 
         System.out.println("La probabilidad de (" + posicion_inicial + ", " + posicion_final + ") es: " + valorEspecifico);
 
-     
-        //mostrarMatriz(resultado.length, resultado[0].length, resultado);
     }
     
     private static double[][] CopiarMatriz(double[][] matriz) {
