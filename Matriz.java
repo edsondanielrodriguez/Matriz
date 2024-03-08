@@ -256,6 +256,7 @@ public class Matriz {
         System.out.println("\n");
         
         double valorEspecifico = resultado2[posicion_final][posicion_inicial];
+        // double valorEspecifico = resultado2[posicion_final][posicion_inicial];
 
         System.out.println("La probabilidad de (" + posicion_inicial + ", " + posicion_final + ") es: " + valorEspecifico);
 
