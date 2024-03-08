@@ -107,7 +107,7 @@ public class Matriz {
                             do {
                                 System.out.print("Ingrese la posición inicial: ");
                                 posicion_inicial = entrada.nextInt();
-                            } while (posicion_inicial < 0);
+                            } while (posicion_inicial < 0  || posicion_inicial>columna-1);
                         }        
                     break;
 
@@ -121,7 +121,7 @@ public class Matriz {
                             do {
                                 System.out.print("Ingrese la posición final: ");
                                 posicion_final = entrada.nextInt();
-                            } while (posicion_final < 0);
+                            } while (posicion_final < 0 || posicion_inicial>columna-1);
                         }        
                     break;
 
@@ -243,7 +243,7 @@ public class Matriz {
                     
                 //    mostrarMatriz(resultado.length, resultado[0].length, resultado);
                     
-                    double[] filaExtraida = extraerFila(resultado, posicion_final);
+                    double[] filaExtraida = extraerFila(resultado, posicion_inicial);   ///////////77
                     resultado2=CopiarMatriz(resultado);
                     resultado = multiplicarMatrices(resultado, matrizGlobal);
                     for (double elemento : filaExtraida) {
@@ -255,10 +255,10 @@ public class Matriz {
         // Imprimir resultado.
         System.out.println("\n");
         
-        double valorEspecifico = resultado2[posicion_final][posicion_inicial];
+        double valorEspecifico = resultado2[posicion_inicial][posicion_final];
         // double valorEspecifico = resultado2[posicion_final][posicion_inicial];
 
-        System.out.println("La probabilidad de (" + posicion_inicial + ", " + posicion_final + ") es: " + valorEspecifico);
+        System.out.println("La probabilidad de (" + posicion_inicial + " a " + posicion_final + ") es: " + valorEspecifico);
 
     }
     
